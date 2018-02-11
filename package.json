@@ -1,0 +1,21 @@
+{
+  "name": "diesel-engine",
+  "version": "0.1.0",
+  "description": "Workflow Engine for connecting tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "barlockm@gmail.com",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "js-yaml": "^3.10.0",
+    "koa-compose": "^4.0.0",
+    "leveldown": "^3.0.0",
+    "levelup": "^2.0.1",
+    "lodash": "^4.17.5",
+    "uid-safe": "^2.1.5"
+  }
+}
