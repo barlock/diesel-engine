@@ -10,12 +10,15 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
+    "flat": "^4.0.0",
     "fs-extra": "^5.0.0",
     "js-yaml": "^3.10.0",
+    "jsonpath": "^1.0.0",
     "koa-compose": "^4.0.0",
     "leveldown": "^3.0.0",
     "levelup": "^2.0.1",
     "lodash": "^4.17.5",
+    "traverse": "^0.6.6",
     "uid-safe": "^2.1.5"
   }
 }
