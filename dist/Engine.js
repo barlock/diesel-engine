@@ -1,14 +1,42 @@
 "use strict";
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _stringify = require("babel-runtime/core-js/json/stringify");
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _stringify2 = _interopRequireDefault(_stringify);
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+var _slicedToArray2 = require("babel-runtime/helpers/slicedToArray");
 
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _assign = require("babel-runtime/core-js/object/assign");
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _promise = require("babel-runtime/core-js/promise");
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _regenerator = require("babel-runtime/regenerator");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _objectDestructuringEmpty2 = require("babel-runtime/helpers/objectDestructuringEmpty");
+
+var _objectDestructuringEmpty3 = _interopRequireDefault(_objectDestructuringEmpty2);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var compose = require("koa-compose"),
     fs = require("fs-extra"),
@@ -25,9 +53,8 @@ var JSON_PATH_PATTERN = /^\$\./;
 
 var Engine = function () {
   function Engine(_ref) {
-    _objectDestructuringEmpty(_ref);
-
-    _classCallCheck(this, Engine);
+    (0, _objectDestructuringEmpty3.default)(_ref);
+    (0, _classCallCheck3.default)(this, Engine);
 
     this._plugins = {};
     this._flows = [];
@@ -35,7 +62,7 @@ var Engine = function () {
     this._flowMiddleware = {};
   }
 
-  _createClass(Engine, [{
+  (0, _createClass3.default)(Engine, [{
     key: "plugin",
     value: function plugin(name, _plugin) {
       var _this = this;
@@ -49,9 +76,9 @@ var Engine = function () {
   }, {
     key: "_parseFlowYaml",
     value: function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(yml) {
+      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(yml) {
         var docs, flow, actions;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
+        return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
@@ -96,9 +123,9 @@ var Engine = function () {
   }, {
     key: "_getFlowFromDisk",
     value: function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(flowFile) {
+      var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(flowFile) {
         var yml;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        return _regenerator2.default.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
@@ -126,11 +153,11 @@ var Engine = function () {
   }, {
     key: "_addFlowsFromDir",
     value: function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(flowDir) {
+      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(flowDir) {
         var _this2 = this;
 
         var files, flowConfigs, flows;
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
@@ -140,7 +167,7 @@ var Engine = function () {
               case 2:
                 files = _context3.sent;
                 _context3.next = 5;
-                return Promise.all(files.map(function (file) {
+                return _promise2.default.all(files.map(function (file) {
                   return _this2._getFlowFromDisk(path.join(flowDir, file));
                 }));
 
@@ -170,20 +197,20 @@ var Engine = function () {
   }, {
     key: "_addFlowMiddleware",
     value: function _addFlowMiddleware(middleware) {
-      Object.assign(this._flowMiddleware, flatten(middleware));
+      (0, _assign2.default)(this._flowMiddleware, flatten(middleware));
     }
   }, {
     key: "addFlows",
     value: function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(_ref5) {
+      var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(_ref5) {
         var flowDir = _ref5.flowDir,
             middleware = _ref5.middleware;
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        return _regenerator2.default.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return Promise.all([this._addFlowsFromDir(flowDir), this._addFlowMiddleware(middleware)]);
+                return _promise2.default.all([this._addFlowsFromDir(flowDir), this._addFlowMiddleware(middleware)]);
 
               case 2:
               case "end":
@@ -208,7 +235,7 @@ var Engine = function () {
     key: "_getActionAcceptor",
     value: function _getActionAcceptor(action) {
       var _action$type$split = action.type.split("."),
-          _action$type$split2 = _slicedToArray(_action$type$split, 2),
+          _action$type$split2 = (0, _slicedToArray3.default)(_action$type$split, 2),
           actionPlugin = _action$type$split2[0],
           actionType = _action$type$split2[1];
 
@@ -220,7 +247,7 @@ var Engine = function () {
       var spec = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var context = arguments[1];
 
-      var obj = JSON.parse(JSON.stringify(spec));
+      var obj = JSON.parse((0, _stringify2.default)(spec));
 
       traverse(obj).forEach(function (value) {
         if (typeof value === "string" && value.match(JSON_PATH_PATTERN)) {
@@ -233,14 +260,14 @@ var Engine = function () {
   }, {
     key: "_act",
     value: function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(stateAction, action, context) {
+      var _ref7 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(stateAction, action, context) {
         var _stateAction$type$spl, _stateAction$type$spl2, pluginName, actionType, plugin;
 
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        return _regenerator2.default.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _stateAction$type$spl = stateAction.type.split("."), _stateAction$type$spl2 = _slicedToArray(_stateAction$type$spl, 2), pluginName = _stateAction$type$spl2[0], actionType = _stateAction$type$spl2[1];
+                _stateAction$type$spl = stateAction.type.split("."), _stateAction$type$spl2 = (0, _slicedToArray3.default)(_stateAction$type$spl, 2), pluginName = _stateAction$type$spl2[0], actionType = _stateAction$type$spl2[1];
                 plugin = this._plugins[pluginName];
 
                 if (plugin.actions && plugin.actions[actionType]) {
@@ -272,11 +299,11 @@ var Engine = function () {
   }, {
     key: "_dispatchToFlow",
     value: function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(flow, action, context) {
+      var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(flow, action, context) {
         var _this3 = this;
 
         var actionAcceptor, next, actionMiddleware, acceptorState, nextState, actionMiddlewareFns;
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
@@ -319,7 +346,7 @@ var Engine = function () {
 
               case 12:
                 _context6.next = 14;
-                return Promise.all(nextState.actions.map(function (stateAction) {
+                return _promise2.default.all(nextState.actions.map(function (stateAction) {
                   return _this3._act(stateAction, action, context);
                 }));
 
@@ -340,11 +367,11 @@ var Engine = function () {
   }, {
     key: "dispatch",
     value: function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(action) {
+      var _ref9 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(action) {
         var _this4 = this;
 
         var actionAcceptor, context;
-        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+        return _regenerator2.default.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
@@ -367,13 +394,13 @@ var Engine = function () {
                 return compose(this._middleware)({ action: action, context: context });
 
               case 8:
-                return _context8.abrupt("return", Promise.all(this._flows.map(function () {
-                  var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(flow) {
-                    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                return _context8.abrupt("return", _promise2.default.all(this._flows.map(function () {
+                  var _ref10 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(flow) {
+                    return _regenerator2.default.wrap(function _callee7$(_context7) {
                       while (1) {
                         switch (_context7.prev = _context7.next) {
                           case 0:
-                            return _context7.abrupt("return", _this4._dispatchToFlow(flow, action, Object.assign({}, context)));
+                            return _context7.abrupt("return", _this4._dispatchToFlow(flow, action, (0, _assign2.default)({}, context)));
 
                           case 1:
                           case "end":
@@ -403,7 +430,6 @@ var Engine = function () {
       return dispatch;
     }()
   }]);
-
   return Engine;
 }();
 
