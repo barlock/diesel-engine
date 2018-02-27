@@ -1,6 +1,6 @@
 {
   "name": "diesel-engine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Workflow Engine for connecting tools",
   "main": "index.js",
   "scripts": {
