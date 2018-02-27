@@ -1,14 +1,18 @@
 {
   "name": "diesel-engine",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Workflow Engine for connecting tools",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel lib -d dist"
   },
   "author": "barlockm@gmail.com",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
   "dependencies": {
     "flat": "^4.0.0",
     "fs-extra": "^5.0.0",
